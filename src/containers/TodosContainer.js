@@ -23,16 +23,15 @@ const TodosContainer = ({
   );
 };
 
-const mapStateToProps = ({ todos }) => ({
-  input: todos.input,
-  todos: todos.todos,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  changeInput: () => dispatch(changeInput()),
-  insert: () => dispatch(insert()),
-  toggle: () => dispatch(toggle()),
-  remove: () => dispatch(remove()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodosContainer);
+export default connect(
+  ({ todos }) => ({
+    input: todos.input,
+    todos: todos.todos,
+  }),
+  {
+    changeInput,
+    insert,
+    toggle,
+    remove,
+  },
+)(TodosContainer);
